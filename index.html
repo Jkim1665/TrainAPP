@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Live Train Scheduler</title>
+   
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+</head>
+
+<body style="text-align: center">
+    <div class="jumbotron"><h1>Train Time</h1>
+    </div>
+    <!-- container for the "current Train schedule" -->
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Current Train Schedule</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover" id="trainTable">
+                        <thead>
+                            <tr>
+                                <th>Train Name</th>
+                                <th>Destination</th>
+                                <th>Frequency (min)</th>
+                                <th>Next Arrival</th>
+                                <th>Minutes Away</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody class="text-left" id="refresh">
+                        </tbody>
+                        <div class="text-align: center"  id="refresher"></div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container for "add train" -->
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Add Train</h3>
+                </div>
+                <div class="panel-body">
+                    <form roles="form">
+                        <div class="form-group">
+                            <label class="name-input" style="text-align:left">Train Name</label>
+                            <input type="text" id="trainNameInput" class="form-control" placeholder="Train Name">
+
+                            <label class="destination-input" style="text-align:left">Destination</label>
+                            <input type="text" class="form-control" id="destinationInput" placeholder="Final Destination???">
+
+                            <label class="firstTrain-input" style="text-align:left">First Train (HH:mm - miltary time)</label>
+                            <input type="text" class="form-control" id="firstTrainInput" oninput="javascript: if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                maxLength="4" placeholder="Requires 3 or 4 digits">
+
+                            <label class="frequency-input" style="text-align:left">Frequency (min)</label>
+                            <input type="number" class="form-control" id="frequencyInput" maxLength="2" oninput="javascript: if(this.value.length>maxLength) this.value = this.value = this.value.slice(0, this.maxLength);" placeholder="Requires 2 digit Numbers">
+                        </div>
+                        <button class="btn btn-default" id="submit" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/script.js"></script>
+</body>
+
+</html>
